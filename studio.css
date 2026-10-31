@@ -1,0 +1,73 @@
+/* H3 Studio — design layer only (colors, radius, shadows, type). No sizes, spacing or positions are changed. */
+:root{
+  --st-bg:#09090e;--st-surface:#13131a;--st-surface2:#1a1a24;--st-sunken:#0e0e14;
+  --st-line:#262633;--st-line2:#34344a;
+  --st-text:#eeedf5;--st-muted:#8e8ca3;--st-soft:#c9c6da;
+  --st-accent:#8b5cf6;--st-accent2:#a78bfa;--st-accent-bg:#1d1633;--st-accent-line:#4c3b8a;
+  --st-ok:#6ee7a8;--st-warn:#f2d27a;--st-bad:#ff9d9d;
+}
+html body{background:var(--st-bg);color:var(--st-text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:.01em}
+.header{background:rgba(9,9,14,.82)!important;-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--st-line)}
+.brand{font-weight:700;letter-spacing:.06em;background:linear-gradient(90deg,#f3f0ff,var(--st-accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.runtime,.billing{color:var(--st-muted)}
+.status{color:var(--st-ok)}
+.billing.billing-ok{color:var(--st-soft)}
+.card{background:var(--st-surface);border:1px solid var(--st-line);border-radius:18px;box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 8px 24px rgba(0,0,0,.28)}
+h2{font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--st-text)}
+label{color:var(--st-muted);letter-spacing:.03em}
+.small{color:var(--st-muted)}
+input,select,textarea{background:var(--st-sunken);border:1px solid var(--st-line);color:var(--st-text);border-radius:12px;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--st-accent);box-shadow:0 0 0 3px rgba(139,92,246,.22)}
+.mode button,.secondary,.pill{background:var(--st-surface2);border:1px solid var(--st-line);color:var(--st-text);border-radius:12px;transition:background .15s,border-color .15s,transform .05s}
+.mode button:active,.secondary:active,.primary:active{transform:scale(.98)}
+.mode button.active,.secondary.active,.pill.active{background:var(--st-accent-bg);border-color:var(--st-accent);color:#f3efff}
+.pill{border-radius:999px}
+.primary{background:linear-gradient(180deg,#9b72f8,#7c4df0);color:#fff;border-radius:13px;box-shadow:0 6px 18px rgba(124,77,240,.35);letter-spacing:.04em}
+.primary:disabled{box-shadow:none}
+.filebox,.batch-filepick{border:1px dashed var(--st-line2);background:var(--st-sunken);border-radius:15px}
+.batch-filepick{color:var(--st-accent2)}
+.input-thumb,.thumb,.batch-thumb{border:1px solid var(--st-line);background:#07070b;border-radius:12px}
+.queue,.history-card,.model-item,.batch-item,.batch-ref-set,.batch-summary>div{background:var(--st-sunken);border:1px solid var(--st-line);border-radius:14px}
+.batch-group{background:#140f26;border:1px solid var(--st-accent-line);border-radius:17px}
+.batch-progress{background:#140f26;border:1px solid var(--st-accent-line);border-radius:14px}
+.batch-progress-item{border-top:1px solid #2c2150}
+.batch-status{color:var(--st-soft)}
+.ref-slot{background:var(--st-sunken);border:1px dashed var(--st-line2);border-radius:13px}
+.ref-slot span,.ref-slot small{color:var(--st-muted)}
+.ref-slot b{color:var(--st-accent2)}
+.badge{background:var(--st-accent-bg);border:1px solid var(--st-accent-line);color:#d9ccff}
+summary{color:var(--st-accent2)}
+details{border-top:1px solid var(--st-line)}
+.notice{background:#241e10;border:1px solid #574719;color:var(--st-warn);border-radius:13px}
+.ok{background:#102319;border-color:#245c3b;color:var(--st-ok)}
+.danger{background:#2a1416;border-color:#6a2f35;color:var(--st-bad)}
+.status-queued,.batch-status.status-queued{color:var(--st-accent2)}
+.status-running,.batch-status.status-running{color:var(--st-warn)}
+.status-done,.batch-status.status-done,.duration-good{color:var(--st-ok)}
+.status-failed,.batch-status.status-failed{color:var(--st-bad)}
+.model-ok{color:var(--st-ok)}.model-status{color:var(--st-warn)}.model-error,.model-error-text{color:var(--st-bad)}
+.progress{background:#0a0a10;border:1px solid var(--st-line);border-radius:999px}
+.progress-bar{background:linear-gradient(90deg,var(--st-accent),var(--st-accent2))}
+.bottom{background:rgba(9,9,14,.9)!important;-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-top:1px solid var(--st-line)}
+.nav{color:var(--st-muted);transition:color .15s}
+.nav.active{color:var(--st-accent2);font-weight:700;box-shadow:inset 0 2px 0 var(--st-accent)}
+.history-list.large-view .thumb{background:#050508;border-bottom:1px solid var(--st-line)}
+.pill-x{border:1px solid #5d2c32;background:#2a1416;color:var(--st-bad)}
+.media-modal{background:rgba(3,3,6,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.modal-fullscreen,.modal-close{background:rgba(26,26,36,.9);border:1px solid var(--st-line2)}
+html body .proj-drag-handle{color:var(--st-muted)}
+html body .proj-row.dragging{background:var(--st-accent-bg)}
+html body .proj-fav{color:var(--st-muted)}
+html body #projectFavOnly.active{border-color:#f5b301}
+/* floating Veda / 10Eros buttons and panels (colors only) */
+html body #vedaPill{background:#3d3d4d;box-shadow:0 4px 14px rgba(0,0,0,.45)}
+html body #vedaPill.on{background:#0f8a52}
+html body #erosPill{background:#3d3d4d;box-shadow:0 4px 14px rgba(0,0,0,.45)}
+html body #erosPill.on{background:var(--st-accent)}
+html body #vedaPanel,html body #erosPanel{background:var(--st-surface);border:1px solid var(--st-line2);border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,.6)}
+html body #vedaPanel button,html body #erosPanel button{background:var(--st-surface2);border:1px solid var(--st-line2);border-radius:11px}
+html body #vedaPanel button.sel{background:#0f8a52;border-color:#0f8a52}
+html body #erosPanel button.sel{background:var(--st-accent);border-color:var(--st-accent)}
+html body #vedaPanel input[type=text]{background:var(--st-sunken);border:1px solid var(--st-line2);border-radius:11px}
+html body #erosPanel .box{border:1px solid var(--st-line2);border-radius:12px}
+html body #erosPanel .bar>div{background:var(--st-accent)}
