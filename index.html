@@ -2,6 +2,14 @@
 <html lang="ja">
 <head><base href="https://shuichisaitofd.github.io/runpod-h3-mobile/">
 <meta charset="utf-8">
+<script>
+/* H3 Studio: keep this site's projects separate from the other H3 sites on github.io (same browser storage). Only these keys get a prefix. */
+(function(){try{var MAP={h3MobileProjects:1,h3MobileActiveProjectId:1,h3MobileProjectFavOnly:1};var P=Storage.prototype,g=P.getItem,s=P.setItem,r=P.removeItem;
+function k(o,x){return(o===window.localStorage&&MAP[x])?'studio.'+x:x;}
+P.getItem=function(x){return g.call(this,k(this,x));};
+P.setItem=function(x,v){return s.call(this,k(this,x),v);};
+P.removeItem=function(x){return r.call(this,k(this,x));};}catch(e){}})();
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>H3 Studio</title>
 <link rel="stylesheet" href="styles.css?v=20260928c">
