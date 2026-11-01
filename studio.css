@@ -71,3 +71,5 @@ html body #erosPanel button.sel{background:var(--st-accent);border-color:var(--s
 html body #vedaPanel input[type=text]{background:var(--st-sunken);border:1px solid var(--st-line2);border-radius:11px}
 html body #erosPanel .box{border:1px solid var(--st-line2);border-radius:12px}
 html body #erosPanel .bar>div{background:var(--st-accent)}
+/* keep the sticky header below the iPhone status bar / Safari toolbar */
+html body .header{padding-top:calc(12px + env(safe-area-inset-top,0px))!important}
