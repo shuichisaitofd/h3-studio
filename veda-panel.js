@@ -10,6 +10,8 @@
   var refOpts = null;   // allowed reference_sparsity values from ComfyUI, or null
   var predictor = null; // predictor file name from ComfyUI
   var nodeState = 'checking'; // checking | ok | missing
+  var setup = null;     // background Veda setup progress from /h3-mobile/api/veda/status (null = not available on this Pod)
+  var setupTimer = null, setupTries = 0;
 
   try { var saved = JSON.parse(localStorage.getItem(KEY) || 'null'); if (saved) { st.on = !!saved.on; st.pct = Number(saved.pct) || 90; st.ref = (saved.ref === null || saved.ref === undefined || isNaN(Number(saved.ref))) ? null : Number(saved.ref); st.steps = String(saved.steps || ''); st.layers = String(saved.layers || ''); } } catch (e) {}
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
@@ -17,6 +19,8 @@
   function cleanList(v) { var t = String(v == null ? '' : v).trim(); return /^[0-9,\-\s]*$/.test(t) ? t : null; }
   function refValue(s) { return (s.ref === null || s.ref === undefined) ? s.pct : s.ref; }
   function label() {
+    if (nodeState !== 'ok' && setup && setup.state === 'working') return 'Veda 準備中' + (setup.pct != null ? ' ' + setup.pct + '%' : '');
+    if (nodeState !== 'ok' && setup && setup.state === 'failed') return 'Veda 準備失敗';
     if (!st.on) return 'Veda OFF';
     var t = 'Veda ' + st.pct + '%';
     if (refValue(st) !== st.pct) t += ' 参' + refValue(st);
@@ -150,6 +154,32 @@
     }).catch(function () { nodeState = 'missing'; render(true); });
   }
 
+  function loadSetup() {
+    clearTimeout(setupTimer);
+    baseFetch(api('/h3-mobile/api/veda/status')).then(function (r) {
+      if (r.status === 404) return 'none';
+      return r.ok ? r.json() : null;
+    }).then(function (j) {
+      if (j === 'none') { setup = null; render(true); return; }
+      if (j) setup = j;
+      render(true);
+      if (j && j.state === 'ok' && nodeState !== 'ok') { loadNodeInfo(); return; }
+      if (!j || j.state === 'working' || j.state === 'unknown') { if (setupTries++ < 1200) setupTimer = setTimeout(loadSetup, 3000); }
+    }).catch(function () { if (setupTries++ < 1200) setupTimer = setTimeout(loadSetup, 5000); });
+  }
+  function mb(n) { return Math.round((n || 0) / 1048576); }
+  function mmss(s) { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+  function setupBox() {
+    if (nodeState === 'ok' || !setup) return '';
+    if (setup.state === 'failed') return '<div class="warn">Vedaの準備に失敗しました: ' + esc(setup.step.replace(/^失敗: /, '')) + '</div>';
+    var pct = setup.pct;
+    var line = esc(setup.step) + (pct != null ? ' <b>' + pct + '%</b>' : '');
+    if (setup.total) line += '<br>' + mb(setup.downloaded) + ' / ' + mb(setup.total) + ' MB';
+    if (setup.since != null && setup.state === 'working') line += '<br><span class="note">この段階になってから ' + mmss(setup.since) + '</span>';
+    return '<div class="vsetup"><div>' + line + '</div>' + (pct != null ? '<div class="vbar"><div style="width:' + pct + '%"></div></div>' : '') +
+      '<div class="note">準備が終わるとこの表示が消えて、ONで使えるようになります(途中でComfyUIが一度再起動します)。</div></div>';
+  }
+
   var pill, panel;
   function css() {
     var s = document.createElement('style');
@@ -160,7 +190,8 @@
       '#vedaPanel h3{margin:0 0 8px;font-size:15px}#vedaPanel .row{display:flex;gap:8px;align-items:center;margin:8px 0}' +
       '#vedaPanel button{padding:10px 12px;border-radius:10px;border:1px solid #666;background:#2c2c2e;color:#fff;font-size:14px}' +
       '#vedaPanel button.sel{background:#0a7d3b;border-color:#0a7d3b}#vedaPanel input[type=range]{flex:1;height:32px}' +
-      '#vedaPanel .note{font-size:12px;color:#bbb}#vedaPanel .warn{font-size:13px;color:#ffb4a8}';
+      '#vedaPanel .note{font-size:12px;color:#bbb}#vedaPanel .warn{font-size:13px;color:#ffb4a8}' +
+      '#vedaPanel .vsetup{border:1px solid #444;border-radius:10px;padding:10px;margin:8px 0}#vedaPanel .vbar{height:8px;border-radius:4px;background:#444;overflow:hidden;margin:8px 0 6px}#vedaPanel .vbar>div{height:100%;background:#0a7d3b;transition:width .4s}';
     document.head.appendChild(s);
   }
   function snap(v, list, lo0) {
@@ -190,7 +221,8 @@
     if (fromAsync && ae && ae.tagName === 'INPUT' && ae.type === 'text' && panel.contains(ae)) return;
     var gr = rangeOf(opts, 10, 99), rr = rangeOf(refOpts, 0, 99);
     var refPos = st.ref === null ? snap(st.pct, refOpts || null, 0) : st.ref;
-    var warn = nodeState === 'missing' ? '<div class="warn">この Pod には Veda ノードが入っていません(起動して数分は、自動で入れている途中のことがあります)。ONにすると生成が失敗します。</div>' :
+    var sb = setupBox();
+    var warn = sb ? sb : nodeState === 'missing' ? '<div class="warn">この Pod には Veda ノードが入っていません(起動して数分は、自動で入れている途中のことがあります)。ONにすると生成が失敗します。</div>' :
       nodeState === 'nopredictor' ? '<div class="warn">Veda の予測モデルファイルが見つかりません。</div>' :
       nodeState === 'checking' ? '<div class="note">Vedaの確認中…</div>' : '';
     panel.innerHTML = '<h3>Veda テスト(画像から動画のみ)</h3>' + warn +
@@ -233,7 +265,7 @@
     panel = document.createElement('div'); panel.id = 'vedaPanel'; panel.style.display = 'none';
     pill.onclick = function () { panel.style.display = panel.style.display === 'none' ? 'block' : 'none'; render(); };
     document.body.appendChild(panel); document.body.appendChild(pill);
-    render(); loadNodeInfo();
+    render(); loadNodeInfo(); loadSetup();
     var hl = document.getElementById('historyList');
     if (hl && window.MutationObserver) new MutationObserver(scheduleAnnotate).observe(hl, { childList: true });
   }
