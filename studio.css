@@ -73,3 +73,5 @@ html body #erosPanel .box{border:1px solid var(--st-line2);border-radius:12px}
 html body #erosPanel .bar>div{background:var(--st-accent)}
 /* keep the sticky header below the iPhone status bar / Safari toolbar */
 html body .header{padding-top:calc(12px + env(safe-area-inset-top,0px))!important}
+/* Veda / 10Eros panels: fit inside the visible screen on iPhone Safari (100vh there includes the hidden toolbars) */
+html body #vedaPanel,html body #erosPanel{max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px);overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
