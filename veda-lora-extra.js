@@ -9,7 +9,8 @@ const extras=[
  {id:'veda-rough-sex',name:'Rough Sex',filename:'Rough.Sex.safetensors',originalFilename:'Rough.Sex.safetensors',sha256:'',defaultStrength:1},
  {id:'veda-h3-speed-slider-1-1',name:'H3 Speed Slider 1.1',filename:'H3_speed_slider_1.1.safetensors',originalFilename:'H3_speed_slider_1.1.safetensors',sha256:'',defaultStrength:1},
  {id:'veda-hmnsfw-extreme-realism',name:'HMNSFW Extreme Realism',filename:'HMNSFW-Extreme-Realism.safetensors',originalFilename:'HMNSFW-Extreme-Realism.safetensors',sha256:'',defaultStrength:1},
- {id:'veda-h3-cunnilingus-k3nk',name:'H3 Cunnilingus (k3nk)',filename:'h3-cunnilingus-step16000-k3nk-r16-k3nk.safetensors',originalFilename:'h3-cunnilingus-step16000-k3nk-r16-k3nk.safetensors',sha256:'',defaultStrength:1}
+ {id:'veda-h3-cunnilingus-k3nk',name:'H3 Cunnilingus (k3nk)',filename:'h3-cunnilingus-step16000-k3nk-r16-k3nk.safetensors',originalFilename:'h3-cunnilingus-step16000-k3nk-r16-k3nk.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-cxy-kiss-v03',name:'CXY Kiss v03',filename:'cxy_kiss_v03_000002000.safetensors',originalFilename:'cxy_kiss_v03_000002000.safetensors',sha256:'',defaultStrength:1}
 ];
 try{
   const lib=JSON.parse(localStorage.getItem(KEY)||'[]');
