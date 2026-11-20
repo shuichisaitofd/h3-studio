@@ -11,7 +11,9 @@ const extras=[
  {id:'veda-hmnsfw-extreme-realism',name:'HMNSFW Extreme Realism',filename:'HMNSFW-Extreme-Realism.safetensors',originalFilename:'HMNSFW-Extreme-Realism.safetensors',sha256:'',defaultStrength:1},
  {id:'veda-h3-cunnilingus-k3nk',name:'H3 Cunnilingus (k3nk)',filename:'h3-cunnilingus-step16000-k3nk-r16-k3nk.safetensors',originalFilename:'h3-cunnilingus-step16000-k3nk-r16-k3nk.safetensors',sha256:'',defaultStrength:1},
  {id:'veda-cxy-kiss-v03',name:'CXY Kiss v03',filename:'cxy_kiss_v03_000002000.safetensors',originalFilename:'cxy_kiss_v03_000002000.safetensors',sha256:'',defaultStrength:1},
- {id:'veda-anal-minimax-v1',name:'Anal Minimax v1',filename:'analMinimax_v1.safetensors',originalFilename:'analMinimax_v1.safetensors',sha256:'',defaultStrength:1}
+ {id:'veda-anal-minimax-v1',name:'Anal Minimax v1',filename:'analMinimax_v1.safetensors',originalFilename:'analMinimax_v1.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-h3-vbvr-pro-v2',name:'H3 VBVR Pro V2',filename:'H3_VBVR_Pro-V2.safetensors',originalFilename:'H3_VBVR_Pro-V2.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-cinema-mh3-v02',name:'Cinema MH3 V02',filename:'Cinema-MH3-V02_000010000.safetensors',originalFilename:'Cinema-MH3-V02_000010000.safetensors',sha256:'',defaultStrength:1}
 ];
 try{
   const lib=JSON.parse(localStorage.getItem(KEY)||'[]');
