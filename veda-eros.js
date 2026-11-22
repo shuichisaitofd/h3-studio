@@ -4,7 +4,7 @@
   'use strict';
   var KEY = 'h3eros_state_v1';
   var UNET_ID = '105:6';
-  var SHORT = { beta7: 'beta7', v2: '旧' };
+  var SHORT = { beta7: 'beta7', v10: 'v1.0', b72s: 'B72', v2: '旧' };
   var st = { model: 'beta7' }; // 'beta7' | 'v2'
   var info = null; // { models: { key: {label, filename, status, downloaded, total, error} } } from the pod, or null
   var pill, panel, timer = null;
