@@ -13,7 +13,15 @@ const extras=[
  {id:'veda-cxy-kiss-v03',name:'CXY Kiss v03',filename:'cxy_kiss_v03_000002000.safetensors',originalFilename:'cxy_kiss_v03_000002000.safetensors',sha256:'',defaultStrength:1},
  {id:'veda-anal-minimax-v1',name:'Anal Minimax v1',filename:'analMinimax_v1.safetensors',originalFilename:'analMinimax_v1.safetensors',sha256:'',defaultStrength:1},
  {id:'veda-h3-vbvr-pro-v2',name:'H3 VBVR Pro V2',filename:'H3_VBVR_Pro-V2.safetensors',originalFilename:'H3_VBVR_Pro-V2.safetensors',sha256:'',defaultStrength:1},
- {id:'veda-cinema-mh3-v02',name:'Cinema MH3 V02',filename:'Cinema-MH3-V02_000010000.safetensors',originalFilename:'Cinema-MH3-V02_000010000.safetensors',sha256:'',defaultStrength:1}
+ {id:'veda-cinema-mh3-v02',name:'Cinema MH3 V02',filename:'Cinema-MH3-V02_000010000.safetensors',originalFilename:'Cinema-MH3-V02_000010000.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-eros-animensfw',name:'Eros Anime NSFW',filename:'Eros_AnimeNSFW.safetensors',originalFilename:'Eros_AnimeNSFW.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-eros-assjiggle',name:'Eros Ass Jiggle',filename:'Eros_AssJiggle.safetensors',originalFilename:'Eros_AssJiggle.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-eros-cummerge',name:'Eros Cum Merge',filename:'Eros_CumMerge.safetensors',originalFilename:'Eros_CumMerge.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-eros-finalcut',name:'Eros Final Cut',filename:'Eros_FinalCut.safetensors',originalFilename:'Eros_FinalCut.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-eros-motionbooster-v2',name:'Eros Motion Booster V2',filename:'Eros_MotionBooster_V2.safetensors',originalFilename:'Eros_MotionBooster_V2.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-eros-plora',name:'Eros PLoRA',filename:'Eros_PLoRA.safetensors',originalFilename:'Eros_PLoRA.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-eros-silveranel-warmup',name:'Eros Silver Anel Warmup',filename:'Eros_SilverAnel_Warmup.safetensors',originalFilename:'Eros_SilverAnel_Warmup.safetensors',sha256:'',defaultStrength:1},
+ {id:'veda-eros-slopbounce',name:'Eros Slop Bounce',filename:'Eros_SlopBounce.safetensors',originalFilename:'Eros_SlopBounce.safetensors',sha256:'',defaultStrength:1}
 ];
 try{
   const lib=JSON.parse(localStorage.getItem(KEY)||'[]');
